@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QualityDigital.TesteMarcos.Web", "QualityDigital.TesteMarcos.Web\QualityDigital.TesteMarcos.Web.csproj", "{1D18A9E0-439B-46E8-92BB-BDEC80E16363}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marcos.EstudoTddDdd.Web", "Marcos.EstudoTddDdd.Web\Marcos.EstudoTddDdd.Web.csproj", "{1D18A9E0-439B-46E8-92BB-BDEC80E16363}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QualityDigital.TesteMarcos.TestesDeUnidade", "QualityDigital.TesteMarcos.TestesDeUnidade\QualityDigital.TesteMarcos.TestesDeUnidade.csproj", "{C4B11D3C-470D-42EC-B212-02FCA9FF53A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marcos.EstudoTddDdd.TestesDeUnidade", "Marcos.EstudoTddDdd.TestesDeUnidade\Marcos.EstudoTddDdd.TestesDeUnidade.csproj", "{C4B11D3C-470D-42EC-B212-02FCA9FF53A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E1574D82-FE1D-41CB-8093-0873C94D12C2}"
 	ProjectSection(SolutionItems) = preProject
