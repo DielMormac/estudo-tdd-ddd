@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Servicos;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Fabricas;
+using QualityDigital.TesteMarcos.Web.Infraestrutura.Repositorios;
 
 namespace QualityDigital.TesteMarcos.Web.Controllers
 {
@@ -7,13 +9,13 @@ namespace QualityDigital.TesteMarcos.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Pacotes = new ServicoDeConsultaDePacotes().ConsultarTodos();
+            ViewBag.Pacotes = new ServicoDeConsultaDePacotes(() => FabricaUnidadeDeTrabalho.Criar(), new Pacotes()).ConsultarTodos();
             return View("Index");
         }
 
         public ActionResult ConsultarPacote(int idDoPacote)
         {
-            return Json(new ServicoDeConsultaDePacotes().ConsultarPorId(idDoPacote), JsonRequestBehavior.AllowGet);
+            return Json(new ServicoDeConsultaDePacotes(() => FabricaUnidadeDeTrabalho.Criar(), new Pacotes()).ConsultarPorId(idDoPacote), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -21,7 +23,7 @@ namespace QualityDigital.TesteMarcos.Web.Controllers
             int pacoteSelecionado,
             int[] atividadesSelecionadas)
         {
-            var precoDaInscricao = new ServicoParaCalcularPrecoDaInscricao(new ServicoDeConsultaDePacotes())
+            var precoDaInscricao = new ServicoParaCalcularPrecoDaInscricao(new ServicoDeConsultaDePacotes(() => FabricaUnidadeDeTrabalho.Criar(), new Pacotes()))
                 .Calcular(pacoteSelecionado, atividadesSelecionadas);
 
             return Json(precoDaInscricao, JsonRequestBehavior.AllowGet);

@@ -32,3 +32,12 @@ padding-top: 100px;
     display: inline-block;
     margin-left: 2px;
 }
+#confirmaDadosInscricao .btn-danger {
+    margin-top: 10%;
+    width: 100%;
+    display: block;
+}
+#confirmaDadosInscricao .btn-success {
+    width: 100%;
+    display: block;
+}

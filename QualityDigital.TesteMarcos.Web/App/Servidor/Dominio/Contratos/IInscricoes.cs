@@ -5,10 +5,9 @@ using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura;
 
 namespace QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Contratos
 {
-    public interface IPacotes
+    public interface IInscricoes
     {
-        IPacotes NaUnidadeDeTrabalho(IUnidadeDeTrabalho ut);
-        Pacote ConsultarPorId(int id);
-        IEnumerable<Pacote> ConsultarTodos();
+        IInscricoes NaUnidadeDeTrabalho(IUnidadeDeTrabalho ut);
+        Inscricao Inserir(Inscricao inscricao);
     }
 }

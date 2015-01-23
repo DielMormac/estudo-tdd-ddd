@@ -7,6 +7,9 @@ using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Servicos;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Fabricas;
 using QualityDigital.TesteMarcos.Web.Dominio.Modelos;
 using QualityDigital.TesteMarcos.Web.Infraestrutura.Repositorios;
+using Rhino.Mocks;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Contratos;
 
 namespace QualityDigital.TesteMarcos.TestesDeUnidade
 {
@@ -42,20 +45,29 @@ namespace QualityDigital.TesteMarcos.TestesDeUnidade
         public void ComoUsuarioQueroPodeVisualizarOTotalDoPacoteSelecionado()
         {
             //Arrange
-            var atividadesSelecionadas = new []
+            var atividadesPacoteSelecionado = new List<AtividadePacote>
             {
-                1,
-                2
+                new AtividadePacote(1,"Princíos S.O.L.I.D", valor: 10, vagas: 5, idPacote: 1),
+                new AtividadePacote(2,"DDD", valor: 2, vagas: 3, idPacote: 1),
             };
 
-            const int pacote = 1;
+            var pacoteSelecionado = new Pacote(1, "Arquitetura de Software", valor: 10, vagas: 5, atividades: atividadesPacoteSelecionado);
+
+            var atividadesSelecionadas = new [] {1};
+
+            
+            var mockUnidadeTrabalho = MockRepository.GenerateMock<IUnidadeDeTrabalho>();
+            var mockPacotes = MockRepository.GenerateMock<IPacotes>();
+
+            mockPacotes.Stub(x => x.NaUnidadeDeTrabalho(mockUnidadeTrabalho)).Return(mockPacotes);
+            mockPacotes.Stub(x => x.ConsultarPorId(1)).Return(pacoteSelecionado);
 
             //Act
-            var precoDaInscricao = new ServicoParaCalcularPrecoDaInscricao(new ServicoDeConsultaDePacotes())
-                .Calcular(pacote, atividadesSelecionadas);
+            var precoDaInscricao = new ServicoParaCalcularPrecoDaInscricao(new ServicoDeConsultaDePacotes(() => mockUnidadeTrabalho, mockPacotes))
+                .Calcular(1, atividadesSelecionadas);
 
             //Asserts
-            Assert.IsTrue(precoDaInscricao > 0);
+            Assert.IsTrue(precoDaInscricao == 20);
         }
 
         [TestMethod]
@@ -72,13 +84,18 @@ namespace QualityDigital.TesteMarcos.TestesDeUnidade
         public void ComoUsuarioQueroPodeConsultarAListaDosPacotesDisponiveis()
         {
             //Arrange
-            Pacotes pacotes = new Pacotes(FabricaUnidadeDeTrabalho.Criar());
+            var mockUnidadeTrabalho = MockRepository.GenerateMock<IUnidadeDeTrabalho>();
+            var mockPacotes = MockRepository.GenerateMock<IPacotes>();
+
+            mockPacotes.Stub(x => x.NaUnidadeDeTrabalho(mockUnidadeTrabalho)).Return(mockPacotes);
+            mockPacotes.Stub(x => x.ConsultarTodos()).Return(new List<Pacote> { new Pacote(1, "pacote", valor: 10, vagas: 2, atividades: new List<AtividadePacote>()) });
 
             //Act
-            var todosOsPacotes = pacotes.ConsultarTodos();
+            var todosOsPacotes = new ServicoDeConsultaDePacotes(() => mockUnidadeTrabalho, mockPacotes).ConsultarTodos();
 
             //Assert
-            Assert.IsTrue(todosOsPacotes.Any());
+            Assert.IsTrue(todosOsPacotes.Count() == 1);
+            Assert.IsTrue(todosOsPacotes.First().Valor == 10);
         }
 
     }

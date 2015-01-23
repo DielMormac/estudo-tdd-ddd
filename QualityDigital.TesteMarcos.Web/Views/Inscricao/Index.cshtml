@@ -4,7 +4,7 @@
     ViewBag.Title = "Inscrição para o evento";
 }
 
-<form id="formularioInscricao" class=" form-horizontal col-lg-offset-4 col-lg-4" action="@Url.Action("ConfirmarInscricao")" method="POST">
+<form id="formularioInscricao" class=" form-horizontal col-lg-offset-4 col-lg-4">
     <fieldset>
 
         <legend>Inscrição para o evento</legend>
@@ -60,15 +60,69 @@
         
         <div class="control-group buttons">
             <div class="controls">
-                <button type="submit" class="btn btn-primary">Confirmar</button>
+                <button type="button" id="prosseguirInscricao" class="btn btn-primary">Prosseguir</button>
             </div>
         </div>
 
     </fieldset>
 </form>
 
+<div id="confirmaDadosInscricao">
 
+    <fieldset>
 
+        <legend>Confirme os dados sa inscrição para o evento</legend>
+
+        <div class="control-group">
+            <label class="control-label">Nome</label>
+            <div class="controls">
+                <label class="control-label" id="confirmaNomeDoParticipante"></label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Data de nascimento</label>
+            <div class="controls">
+                <label class="control-label" id="confirmaDataDeDascimentoDoParticipante"></label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Telefone</label>
+            <div class="controls">
+                <label class="control-label" id="confirmaTelefoneDoParticipante"></label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Pacote</label>
+            <div class="controls">
+                <label class="control-label" id="confirmaPacoteSelecionado"></label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Preço da inscrição</label>
+            <div class="controls">
+                <label class="control-label" id="confirmaPrecoInscricao"></label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Atividades</label>
+            <div id="confirmaAtividadesSelecionadas" class="controls">
+            </div>
+        </div>
+
+        <div class="control-group buttons">
+            <div class="controls">
+                <button type="button" id="alterarInscricao" class="btn btn-danger">Alterar inscrição</button>
+                <button type="button" id="confirmarInscricao" class="btn btn-success">Confirmar</button>
+            </div>
+        </div>
+
+    </fieldset>
+</div>
 
 @section Scripts{
     <script src="~/App/Cliente/js/inscricao-index.js"></script>

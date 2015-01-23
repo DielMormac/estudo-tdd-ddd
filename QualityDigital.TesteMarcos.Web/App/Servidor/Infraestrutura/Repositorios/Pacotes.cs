@@ -10,11 +10,12 @@ namespace QualityDigital.TesteMarcos.Web.Infraestrutura.Repositorios
 {
     public class Pacotes : IPacotes
     {
-        private readonly IUnidadeDeTrabalho _ut;
+        private IUnidadeDeTrabalho _ut;
 
-        public Pacotes(IUnidadeDeTrabalho ut)
+        public IPacotes NaUnidadeDeTrabalho(IUnidadeDeTrabalho ut)
         {
             _ut = ut;
+            return this;
         }
 
         public Pacote ConsultarPorId(int id)
