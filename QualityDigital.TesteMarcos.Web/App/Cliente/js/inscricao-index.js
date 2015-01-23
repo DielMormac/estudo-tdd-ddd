@@ -112,6 +112,7 @@
     }
 
     function confirmarInscricao() {
+        //todo: enviar a confirmação
         alert('confimação será enviada aqui!');
     }
 
