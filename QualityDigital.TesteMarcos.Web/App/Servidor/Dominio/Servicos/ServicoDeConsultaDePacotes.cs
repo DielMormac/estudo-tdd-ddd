@@ -1,8 +1,8 @@
 ﻿
 using System.Collections.Generic;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Fabricas;
-using QualityDigital.TesteMarcos.Web.Dominio.Modelos;
-using QualityDigital.TesteMarcos.Web.Infraestrutura.Repositorios;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Modelos;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Repositorios;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Contratos;
 

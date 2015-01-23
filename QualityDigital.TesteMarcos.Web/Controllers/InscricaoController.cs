@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Servicos;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Fabricas;
-using QualityDigital.TesteMarcos.Web.Infraestrutura.Repositorios;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Repositorios;
 
 namespace QualityDigital.TesteMarcos.Web.Controllers
 {

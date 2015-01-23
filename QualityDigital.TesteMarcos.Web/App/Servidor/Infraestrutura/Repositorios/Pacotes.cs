@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Contratos;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura;
-using QualityDigital.TesteMarcos.Web.Dominio.Modelos;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Modelos;
 
-namespace QualityDigital.TesteMarcos.Web.Infraestrutura.Repositorios
+namespace QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Repositorios
 {
     public class Pacotes : IPacotes
     {

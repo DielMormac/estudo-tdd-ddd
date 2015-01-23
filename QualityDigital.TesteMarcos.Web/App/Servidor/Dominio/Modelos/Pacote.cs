@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace QualityDigital.TesteMarcos.Web.Dominio.Modelos
+namespace QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Modelos
 {
     public class Pacote
     {

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QualityDigital.TesteMarcos.Web.Aplicacao.Servicos;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Servicos;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Fabricas;
-using QualityDigital.TesteMarcos.Web.Dominio.Modelos;
-using QualityDigital.TesteMarcos.Web.Infraestrutura.Repositorios;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Modelos;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Repositorios;
 using Rhino.Mocks;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura;
 using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Contratos;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Aplicacao.Servicos;
 
 namespace QualityDigital.TesteMarcos.TestesDeUnidade
 {
@@ -26,12 +26,14 @@ namespace QualityDigital.TesteMarcos.TestesDeUnidade
                 new AtividadePacote(2,"DDD", 2, 5,1),
             };
 
+            var atividadesInscricao = new int[] { 1, 2 };
+
             Inscricao inscricao =
                 new Inscricao("Marcos",
                     new DateTime(1991, 7, 12),
                     "11987607381",
                     new Pacote(1, "Arquitetura de Software", 10, 5, atividadesPacote),
-                    atividadesPacote);
+                    atividadesInscricao);
 
             //Act
             ServicoDeConfirmacaoDaInscricao servico = new ServicoDeConfirmacaoDaInscricao();

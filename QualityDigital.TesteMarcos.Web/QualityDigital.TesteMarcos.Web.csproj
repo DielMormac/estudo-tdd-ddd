@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="App\Servidor\Dominio\Contratos\IInscricoes.cs" />
     <Compile Include="App\Servidor\Dominio\Contratos\IPacotes.cs" />
+    <Compile Include="App\Servidor\Dominio\Modelos\InformacaoInvalidaNoModelo.cs" />
     <Compile Include="App\Servidor\Dominio\Servicos\ServicoDeConsultaDePacotes.cs" />
     <Compile Include="App\Servidor\Dominio\Servicos\ServicoParaCalcularPrecoDaInscricao.cs" />
     <Compile Include="App\Servidor\Infraestrutura\Fabricas\FabricaUnidadeDeTrabalho.cs" />

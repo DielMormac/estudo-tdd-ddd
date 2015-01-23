@@ -1,7 +1,7 @@
-﻿using QualityDigital.TesteMarcos.Web.Dominio.Modelos;
-using QualityDigital.TesteMarcos.Web.Infraestrutura.Repositorios;
+﻿using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Modelos;
+using QualityDigital.TesteMarcos.Web.App.Servidor.Infraestrutura.Repositorios;
 
-namespace QualityDigital.TesteMarcos.Web.Aplicacao.Servicos
+namespace QualityDigital.TesteMarcos.Web.App.Servidor.Aplicacao.Servicos
 {
     public class ServicoDeConfirmacaoDaInscricao
     {
