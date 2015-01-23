@@ -102,7 +102,7 @@
         $("#confirmaDataDeDascimentoDoParticipante").text($('#dataDeDascimentoDoParticipante').val());
         $("#confirmaTelefoneDoParticipante").text($('#telefoneDoParticipante').val());
         $("#confirmaPacoteSelecionado").text(nomeDoPacoteSelecionado());
-        $("#confirmaPrecoInscricao").text($('#precoInscricao').val());
+        $("#confirmaPrecoInscricao").text($('#precoInscricao').text());
         $("#confirmaAtividadesSelecionadas").text(nomesAtividadesSelecionadas());
     }
 
