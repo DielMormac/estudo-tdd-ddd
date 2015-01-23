@@ -101,7 +101,7 @@
         $("#confirmaNomeDoParticipante").text($('#nomeDoParticipante').val());
         $("#confirmaDataDeDascimentoDoParticipante").text($('#dataDeDascimentoDoParticipante').val());
         $("#confirmaTelefoneDoParticipante").text($('#telefoneDoParticipante').val());
-        $("#confirmaPacoteSelecionado").text($('#pacoteSelecionado').val());
+        $("#confirmaPacoteSelecionado").text(nomeDoPacoteSelecionado());
         $("#confirmaPrecoInscricao").text($('#precoInscricao').val());
         $("#confirmaAtividadesSelecionadas").text(nomesAtividadesSelecionadas());
     }
@@ -118,6 +118,10 @@
 
     function idDoPacoteSelecionado() {
         return parseInt($("#pacoteSelecionado option:selected").val());
+    }
+
+    function nomeDoPacoteSelecionado() {
+        return $("#pacoteSelecionado :selected").text();
     }
 
     function idsAtividadesSelecionadas() {

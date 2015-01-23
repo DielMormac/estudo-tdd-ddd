@@ -1,4 +1,4 @@
-﻿@using QualityDigital.TesteMarcos.Web.Dominio.Modelos
+﻿@using QualityDigital.TesteMarcos.Web.App.Servidor.Dominio.Modelos
 
 @{
     ViewBag.Title = "Inscrição para o evento";
@@ -67,51 +67,40 @@
     </fieldset>
 </form>
 
-<div id="confirmaDadosInscricao">
+<div id="confirmaDadosInscricao" class="col-lg-offset-4 col-lg-4">
 
     <fieldset>
 
-        <legend>Confirme os dados sa inscrição para o evento</legend>
+        <legend>Confirme os dados da inscrição para o evento</legend>
 
         <div class="control-group">
-            <label class="control-label">Nome</label>
-            <div class="controls">
-                <label class="control-label" id="confirmaNomeDoParticipante"></label>
-            </div>
+            <label class="control-label">Nome:</label>
+            <label id="confirmaNomeDoParticipante" class="confirmacao-info"></label>
         </div>
 
         <div class="control-group">
-            <label class="control-label">Data de nascimento</label>
-            <div class="controls">
-                <label class="control-label" id="confirmaDataDeDascimentoDoParticipante"></label>
-            </div>
+            <label class="control-label">Data de nascimento:</label>
+            <label id="confirmaDataDeDascimentoDoParticipante" class="confirmacao-info"></label>
         </div>
 
         <div class="control-group">
-            <label class="control-label">Telefone</label>
-            <div class="controls">
-                <label class="control-label" id="confirmaTelefoneDoParticipante"></label>
-            </div>
+            <label class="control-label">Telefone:</label>
+            <label id="confirmaTelefoneDoParticipante" class="confirmacao-info"></label>
         </div>
 
         <div class="control-group">
-            <label class="control-label">Pacote</label>
-            <div class="controls">
-                <label class="control-label" id="confirmaPacoteSelecionado"></label>
-            </div>
+            <label class="control-label">Pacote:</label>
+            <label id="confirmaPacoteSelecionado" class="confirmacao-info"></label>
         </div>
 
         <div class="control-group">
-            <label class="control-label">Preço da inscrição</label>
-            <div class="controls">
-                <label class="control-label" id="confirmaPrecoInscricao"></label>
-            </div>
+            <label class="control-label">Preço da inscrição:</label>
+            <label id="confirmaPrecoInscricao" class="confirmacao-info"></label>
         </div>
 
         <div class="control-group">
-            <label class="control-label">Atividades</label>
-            <div id="confirmaAtividadesSelecionadas" class="controls">
-            </div>
+            <label class="control-label">Atividades:</label>
+            <div id="confirmaAtividadesSelecionadas" class="controls confirmacao-info"></div>
         </div>
 
         <div class="control-group buttons">

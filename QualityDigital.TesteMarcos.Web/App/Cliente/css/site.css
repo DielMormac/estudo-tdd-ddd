@@ -32,12 +32,13 @@ padding-top: 100px;
     display: inline-block;
     margin-left: 2px;
 }
-#confirmaDadosInscricao .btn-danger {
-    margin-top: 10%;
-    width: 100%;
-    display: block;
+#confirmaDadosInscricao .confirmacao-info{
+    font-weight:normal;
 }
-#confirmaDadosInscricao .btn-success {
-    width: 100%;
-    display: block;
+#confirmaDadosInscricao .buttons{
+    margin-top:10%;
+
+}
+#confirmaDadosInscricao .btn{
+    width:150px;
 }
