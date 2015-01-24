@@ -98,7 +98,7 @@
             }
         })
             .done(function (valor) {
-                $('#precoInscricao').text(valor.toFixed(2).toLocaleString());
+                $('#precoInscricao').text(valor.formatMoney(2, 'R$', '.', ','));
             });
     }
 
