@@ -62,6 +62,7 @@
         //Limpa lista de atividades
         $('#atividadesSelecionadas').html('');
         $('#containerAtividadesSelecionadas').hide();
+        $('#precoInscricao').text('');
 
         //Adiciona atividades
         if (pacote !== null && pacote !== undefined) {
