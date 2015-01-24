@@ -4,114 +4,111 @@
     ViewBag.Title = "Inscrição para o evento";
 }
 
-<form id="formularioInscricao" class=" form-horizontal col-lg-offset-4 col-lg-4">
-    <fieldset>
 
-        <legend>Inscrição para o evento</legend>
 
-        <div class="control-group">
-            <label class="control-label" for="nomeDoParticipante">Nome</label>
-            <div class="controls">
-                <input type="text" id="nomeDoParticipante" name="nomeDoParticipante" placeholder="Informe seu nome" autofocus />
-            </div>
+<div class="row clearfix">
+    <div class="col-md-8 column ui-sortable">
+        <form id="formularioInscricao" class=" form-horizontal">
+            <fieldset>
+                <legend>Inscrição para o evento</legend>
+
+                <div class="control-group">
+                    <label class="control-label" for="nomeDoParticipante">Nome</label>
+                    <div class="controls">
+                        <input type="text" id="nomeDoParticipante" name="nomeDoParticipante" placeholder="Informe seu nome" autofocus />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="dataDeDascimentoDoParticipante">Data de nascimento</label>
+                    <div class="controls">
+                        <input type="date" id="dataDeDascimentoDoParticipante" name="dataDeDascimentoDoParticipante" class="input-xlarge" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="telefoneDoParticipante">Telefone</label>
+                    <div class="controls">
+                        <input type="tel" id="telefoneDoParticipante" name="telefoneDoParticipante" placeholder="Informe um telefone para contato" class="input-xlarge" />
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="pacoteSelecionado">Pacote</label>
+                    <div class="controls">
+                        <select id="pacoteSelecionado" name="pacoteSelecionado" class="input-xlarge">
+                            <option value="">Selecione</option>
+                            @foreach (var pacote in (IEnumerable<Pacote>)ViewBag.Pacotes)
+                            {
+                                <option value="@pacote.Id">@pacote.Nome</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group" id="containerAtividadesSelecionadas">
+                    <label class="control-label" for="atividadesSelecionadas">Atividades</label>
+                    <div id="atividadesSelecionadas" class="controls">
+                    </div>
+                </div>
+
+                <div class="control-group buttons">
+                    <div class="controls">
+                        <button type="button" id="prosseguirInscricao" class="btn btn-primary">Prosseguir</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+        <div id="confirmaDadosInscricao">
+
+            <fieldset>
+
+                <legend>Confirme os dados da inscrição para o evento</legend>
+
+                <div class="control-group">
+                    <label class="control-label">Nome:</label>
+                    <label id="confirmaNomeDoParticipante" class="confirmacao-info"></label>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Data de nascimento:</label>
+                    <label id="confirmaDataDeDascimentoDoParticipante" class="confirmacao-info"></label>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Telefone:</label>
+                    <label id="confirmaTelefoneDoParticipante" class="confirmacao-info"></label>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Pacote:</label>
+                    <label id="confirmaPacoteSelecionado" class="confirmacao-info"></label>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Atividades:</label>
+                    <div id="confirmaAtividadesSelecionadas" class="controls confirmacao-info"></div>
+                </div>
+
+                <div class="control-group buttons">
+                    <div class="controls">
+                        <button type="button" id="alterarInscricao" class="btn btn-danger">Alterar inscrição</button>
+                        <button type="button" id="confirmarInscricao" class="btn btn-success">Confirmar</button>
+                    </div>
+                </div>
+
+            </fieldset>
         </div>
-
-        <div class="control-group">
-            <label class="control-label" for="dataDeDascimentoDoParticipante">Data de nascimento</label>
-            <div class="controls">
-                <input type="date" id="dataDeDascimentoDoParticipante" name="dataDeDascimentoDoParticipante" class="input-xlarge" />
-                <p class="help-block">Informe sua data de nascimento</p>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="telefoneDoParticipante">Telefone</label>
-            <div class="controls">
-                <input type="tel" id="telefoneDoParticipante" name="telefoneDoParticipante" placeholder="Informe um telefone para contato" class="input-xlarge" />
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="pacoteSelecionado">Pacote</label>
-            <div class="controls">
-                <select id="pacoteSelecionado" name="pacoteSelecionado" class="input-xlarge">
-                    <option value="-1">Selecione</option>
-
-                    @foreach (var pacote in (IEnumerable<Pacote>)ViewBag.Pacotes)
-                    {
-                        <option value="@pacote.Id">@pacote.Nome</option>
-                    }
-                </select>
-                <p class="help-block">Informe o pacote desejado</p>
-            </div>
-        </div>
-        
-        <div class="control-group" id="containerPrecoInscricao">
-            <label class="control-label" for="precoInscricao">Preço da inscrição</label>
-            <div id="precoInscricao" class="controls">
-            </div>
-        </div>
-
-        <div class="control-group" id="containerAtividadesSelecionadas">
-            <label class="control-label" for="atividadesSelecionadas">Atividades</label>
-            <div id="atividadesSelecionadas" class="controls">
-            </div>
-        </div>
-        
-        <div class="control-group buttons">
-            <div class="controls">
-                <button type="button" id="prosseguirInscricao" class="btn btn-primary">Prosseguir</button>
-            </div>
-        </div>
-
-    </fieldset>
-</form>
-
-<div id="confirmaDadosInscricao" class="col-lg-offset-4 col-lg-4">
-
-    <fieldset>
-
-        <legend>Confirme os dados da inscrição para o evento</legend>
-
-        <div class="control-group">
-            <label class="control-label">Nome:</label>
-            <label id="confirmaNomeDoParticipante" class="confirmacao-info"></label>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Data de nascimento:</label>
-            <label id="confirmaDataDeDascimentoDoParticipante" class="confirmacao-info"></label>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Telefone:</label>
-            <label id="confirmaTelefoneDoParticipante" class="confirmacao-info"></label>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Pacote:</label>
-            <label id="confirmaPacoteSelecionado" class="confirmacao-info"></label>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Preço da inscrição:</label>
-            <label id="confirmaPrecoInscricao" class="confirmacao-info"></label>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Atividades:</label>
-            <div id="confirmaAtividadesSelecionadas" class="controls confirmacao-info"></div>
-        </div>
-
-        <div class="control-group buttons">
-            <div class="controls">
-                <button type="button" id="alterarInscricao" class="btn btn-danger">Alterar inscrição</button>
-                <button type="button" id="confirmarInscricao" class="btn btn-success">Confirmar</button>
-            </div>
-        </div>
-
-    </fieldset>
+    </div>
+    <div class="col-md-4 column ui-sortable" id="containerPrecoInscricao">
+        <label id="tituloPrecoInscricao">Preço da inscrição</label>
+        <label id="precoInscricao"></label>
+    </div>
 </div>
+
+
 
 @section Scripts{
     <script src="~/App/Cliente/js/inscricao-index.js"></script>

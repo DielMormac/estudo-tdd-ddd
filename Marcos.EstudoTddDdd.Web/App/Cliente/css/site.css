@@ -20,8 +20,12 @@ display: block;
 clear: both;
 padding-top: 100px;    
 }
+label.error {
+    font-weight: normal;
+    color: #ff0000;
+}
+
 #formularioInscricao .btn-primary {
-    margin-top: 10%;
     width: 100%;
 }
 #formularioInscricao #atividadesSelecionadas input[type="checkbox"] {
@@ -32,13 +36,38 @@ padding-top: 100px;
     display: inline-block;
     margin-left: 2px;
 }
+#formularioInscricao .buttons{
+    margin-top:10px;
+    margin-bottom:10px;
+
+}
 #confirmaDadosInscricao .confirmacao-info{
     font-weight:normal;
 }
 #confirmaDadosInscricao .buttons{
-    margin-top:10%;
+    margin-top:10px;
+    margin-bottom:10px;
 
 }
 #confirmaDadosInscricao .btn{
     width:150px;
 }
+#containerPrecoInscricao {
+    background-color: #ff7f50;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    height: 140px;
+}
+#containerPrecoInscricao #tituloPrecoInscricao {
+    display: block;
+    font-size: x-large;
+    color: white;
+    text-align: center;
+}
+#containerPrecoInscricao #precoInscricao {
+    display: block;
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+}
+

@@ -1,6 +1,8 @@
 ﻿$(function () {
     'use strict';
 
+    adicionaRegrasDeValidacaoCustomizadas();
+
     //Monta ambiente inicial do formulário
     montaAmbienteInicial();
 
@@ -29,12 +31,18 @@
         e.preventDefault();
         confirmarInscricao();
     });
+    
+    function adicionaRegrasDeValidacaoCustomizadas() {
+        //regras customizadas
+        jQuery.validator.addMethod("aoMenosUmaAtividade", function () {
+            return idsAtividadesSelecionadas().length > 0;
+        }, "Selecione ao menos uma atividade");
+    };
 
     function montaAmbienteInicial() {
         $('#formularioInscricao').show();
         $('#confirmaDadosInscricao').hide();
         $('#containerAtividadesSelecionadas').hide();
-        $('#containerPrecoInscricao').hide();
     }
 
     function consultarPacoteSelecionado() {
@@ -43,7 +51,11 @@
         $.get(url, { idDoPacote: idDoPacoteSelecionado() })
             .done(function (pacote) {
                 montaDadosPacoteSelecionado(pacote);
-            });
+            })
+            .fail(function () {
+                montaDadosPacoteSelecionado(null);
+            })
+        ;
     }
 
     function montaDadosPacoteSelecionado(pacote) {
@@ -67,13 +79,10 @@
                 atividadeIndex++;
             });
         }
-
-        calcularInscricao();
     }
 
     function calcularInscricao() {
         $('#precoInscricao').text('');
-        $('#containerPrecoInscricao').hide();
 
         //Fazendo a requisição ao servidor para calcular a inscricao
         var url = window.siteRoot + 'Inscricao/CalcularInscricao';
@@ -89,21 +98,47 @@
         })
             .done(function (valor) {
                 $('#precoInscricao').text(valor.toFixed(2).toLocaleString());
-                $('#containerPrecoInscricao').show();
             });
     }
 
     function prosseguirInscricao() {
+        if (validarInscricao()) {
+            $('#formularioInscricao').hide();
+            $('#confirmaDadosInscricao').show();
 
-        $('#formularioInscricao').hide();
-        $('#confirmaDadosInscricao').show();
+            $("#confirmaNomeDoParticipante").text($('#nomeDoParticipante').val());
+            $("#confirmaDataDeDascimentoDoParticipante").text($('#dataDeDascimentoDoParticipante').val());
+            $("#confirmaTelefoneDoParticipante").text($('#telefoneDoParticipante').val());
+            $("#confirmaPacoteSelecionado").text(nomeDoPacoteSelecionado());
+            $("#confirmaAtividadesSelecionadas").text(nomesAtividadesSelecionadas());
+        }
+    }
 
-        $("#confirmaNomeDoParticipante").text($('#nomeDoParticipante').val());
-        $("#confirmaDataDeDascimentoDoParticipante").text($('#dataDeDascimentoDoParticipante').val());
-        $("#confirmaTelefoneDoParticipante").text($('#telefoneDoParticipante').val());
-        $("#confirmaPacoteSelecionado").text(nomeDoPacoteSelecionado());
-        $("#confirmaPrecoInscricao").text($('#precoInscricao').text());
-        $("#confirmaAtividadesSelecionadas").text(nomesAtividadesSelecionadas());
+    function validarInscricao() {
+        
+        $("#formularioInscricao").validate({
+            rules: {
+                nomeDoParticipante: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 100
+                },
+                dataDeDascimentoDoParticipante: {
+                    required: true,
+                },
+                telefoneDoParticipante: {
+                    required: true,
+                },
+                pacoteSelecionado: {
+                    required: true,
+                    aoMenosUmaAtividade:true
+                }
+            },
+            messages: {
+            }
+        });
+
+        return $('#formularioInscricao').valid();
     }
 
     function alterarInscricao() {
@@ -117,7 +152,8 @@
     }
 
     function idDoPacoteSelecionado() {
-        return parseInt($("#pacoteSelecionado option:selected").val());
+        var idPacoteSelecionado = $("#pacoteSelecionado option:selected").val();
+        return idPacoteSelecionado != '' ? parseInt(idPacoteSelecionado) : 0;
     }
 
     function nomeDoPacoteSelecionado() {
